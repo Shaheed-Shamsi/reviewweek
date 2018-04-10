@@ -7,6 +7,7 @@ const path = require('path')
 const db = require('./db/models.js').db
 const apiRoutes = require('./api/index.js')
 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -19,6 +20,7 @@ app.use((err, req, res, next) => {
     res.sendStatus(500)
 });
 
+// db.sync({ force: true })
 db.sync()
 .then(() => {
     console.log('db synced')
