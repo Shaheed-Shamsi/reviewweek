@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const db = new Sequelize('postgres://localhost:5432/reviewweek', { logging: false });
-const faker = require('faker')
+
 
 const User = db.define('user', {
     username: {
@@ -23,21 +23,8 @@ const Card =  db.define('card', {
     }
 })
 
-// User.seed = function() {
-//     for (var i = 0; i < 4; i++) {
-//         User.create({
-//             username: faker.name.firstName(),
-//             description: faker.name.jobTitle(),
-//             avatar: faker.image.avatar()
-//         })
-//             .catch(console.error)
-//     }
-// }
-
-// User.seed()
-
 module.exports = {
-    db: db,
-    User: User,
-    Card: Card
+    db,
+    User,
+    Card,
 };

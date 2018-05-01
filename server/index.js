@@ -15,12 +15,17 @@ app.use(express.static(path.join(__dirname, '../public'))); /* get an explanatio
 
 app.use('/api', apiRoutes)
 
-app.use((err, req, res, next) => {
+
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../public/index.html'));
+  });
+
+  app.use((err, req, res, next) => {
     console.error(err)
     res.sendStatus(500)
 });
 
-// db.sync({ force: true })
 db.sync()
 .then(() => {
     console.log('db synced')

@@ -4,7 +4,8 @@
   "description": "",
   "main": "Render",
   "scripts": {
-    "start:dev": "webpack -w & nodemon server"
+    "start:dev": "webpack -w & nodemon server",
+    "seed": "node seed/index.js"
   },
   "author": "",
   "license": "ISC",

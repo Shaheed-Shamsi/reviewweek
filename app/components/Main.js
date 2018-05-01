@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Router, Route } from 'react-router-dom'
+import { Switch, withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import Users from './Users.js'
 import { fetchAllUsers } from '../reducers/user.js'
-import history from '../history';
-
+import UserProfile from './UserProfile.js'
 
 class Main extends Component {
     componentDidMount() {
@@ -12,13 +12,12 @@ class Main extends Component {
     }
   
     render() {
-        
+
       return (
-        <Router history={history}>
-        <div>
+        <Switch>
         <Route exact path='/' component={Users} />
-        </div>
-        </Router>
+        <Route exact path='/user/:id' component={UserProfile} />
+        </Switch>
       )
     }
 }
@@ -31,4 +30,4 @@ const mapDispatchToProps = dispatch => ({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main))

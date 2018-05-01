@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import { Link } from 'react-router-dom'
 
 class Users extends Component {
     constructor(props) {
@@ -10,31 +10,35 @@ class Users extends Component {
   
     render() {
         const { users } = this.props
-        console.log('FINAL USERS', users)
+
       return (
         <div>
-            <h1>Collectors</h1>
-            <div>
+            <h1 className="theh1">Collectors</h1>
+            <ul className="userList">
             {
                 users.length > 1 && users.map(user => {
                     return (
-                        <div key={user.id}>
-                        <div>gewrwer</div>
+                        <Link className="eachUser" key={user.id} to={`/user/${user.id}`}>
+                        <div className="nameStyle">{user.username}</div>
+                        <div className="userDescription">{user.description}</div>
+                        <div className="imageStyle">
+                        <img src={`${user.avatar}`}/>
                         </div>
+                        </Link>
                     )
                 })
             }
-            </div>
+            </ul>
         </div>
       )
     }
 }
 
 const mapStateToProps = function(state) {
-    console.log('blah', state)
-    console.log('users', state.users)
+
+    
     return {
-        users: state
+        users: state.users
     }
 }
 
@@ -42,11 +46,3 @@ const mapDispatchToProps = null;
 
 export default connect(mapStateToProps, mapDispatchToProps)(Users)
 
-
-// {
-//     users.map(user => {
-//         return (
-//             <div>dfs</div>
-//         )
-//     })
-// }

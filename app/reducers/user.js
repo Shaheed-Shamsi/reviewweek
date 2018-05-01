@@ -24,7 +24,7 @@ export const fetchAllUsers = function() {
 export default function reducer(state = [], action) {
     switch (action.type) {
         case GET_ALL_USERS:
-            return Object.assign({}, state, {users: [action.users]})
+            return action.users
         default:
             return state
     }
