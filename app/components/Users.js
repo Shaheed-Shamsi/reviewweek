@@ -9,11 +9,15 @@ class Users extends Component {
     }
   
     render() {
+
         const { users } = this.props
 
       return (
-        <div>
+        <div className="largestDiv">
             <h1 className="theh1">Collectors</h1>
+            <div className="buttonHolder">
+            <button type="button" className="btn btn-primary">Toggle Battle Mode</button>
+            </div>
             <ul className="userList">
             {
                 users.length > 1 && users.map(user => {
@@ -36,7 +40,6 @@ class Users extends Component {
 
 const mapStateToProps = function(state) {
 
-    
     return {
         users: state.users
     }

@@ -17,7 +17,7 @@
     border-width: 2px;
     border-color: orange;
     border-radius: 15px;
-    flex: 0 0 calc(25% - 160px);
+    flex: 0 0 calc(25% - 50px);
     margin: 20px;
 }
 
@@ -57,4 +57,52 @@
     border-radius: 15px;
     position: relative;
     top: 25px;
+}
+
+.singleUserTitle {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+    font-size: 100px;
+    padding: 0px;
+    margin: 0px;
+}
+
+.singleUserDescription {
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+    font-size: 60px;
+    padding: 0px;
+    margin: 0 auto;
+}
+
+.singleUserAvatar {
+    align-content: center;
+    width: 200px;
+    height: 200px;
+    padding: 0px;
+    margin: 20px;
+}
+
+.profileWrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    align-items: center;
+}
+
+.buttonHolder {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.allwrap {
+    background: url(mybackground.jpg);
+    min-height: 1250px;
+}
+
+.btn.btn-primary:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }

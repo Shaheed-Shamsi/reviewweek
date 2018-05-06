@@ -9,6 +9,7 @@ const getAllUsers = function(users) {
     }
 };
 
+
 export const fetchAllUsers = function() {
     return (dispatch) => {
         axios.get('/api/user')

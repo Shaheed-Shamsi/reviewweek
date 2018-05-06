@@ -18,10 +18,19 @@ const User = db.define('user', {
 })
 
 const Card =  db.define('card', {
-    color: {
+    cardname: {
         type: Sequelize.STRING
+    },
+    power: {
+        type: Sequelize.INTEGER,
+    },
+    rarity: {
+        type: Sequelize.INTEGER,
     }
 })
+
+Card.belongsTo(User)
+
 
 module.exports = {
     db,

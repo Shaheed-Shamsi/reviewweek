@@ -6,29 +6,44 @@ class UserProfile extends Component {
         super(props);
 
     }
-
-
-
+    
     render() {
 
-        console.log('this.props', this.props)
-        console.log('this.props.match', this.props.match.params.id)
-        console.log('this.props.users', this.props.users)
-        let users = this.props.users
+        let { users, cards } = this.props
+        console.log('cards', cards)
         let propsId = this.props.match.params.id
+        let cardHolder = cards.filter(card => {
+            console.log(+propsId === card.user.id)
+            return card.user.id === +propsId
+        })
         let currentUser = users.filter(user => {
             if (user.id === +propsId) {
                 return true
             }
         })
+        console.log('here', currentUser.length && cardHolder)
 
-        console.log('current user', currentUser.length && currentUser[0])
 
         return (
+            <div>
             <div className="profileWrapper">
-                <h1 className="userTitle">{currentUser.length && currentUser[0].username}</h1>
-                <div>{currentUser.description}</div>
-                <div>{currentUser.av}</div>
+                <h1 className="singleUserTitle">{currentUser.length && currentUser[0].username}</h1>
+                <div className="singleUserDescription">{currentUser[0].description}</div>
+                <img className="singleUserAvatar" src={`${currentUser[0].avatar}`} />
+            </div>
+            <div className="userCards">
+            <div>{
+                cardHolder.map(card => {
+                    return (
+                        <div key={card.id}>
+                        <div>{card.cardname}</div>
+                        <div>{card.power}</div>
+                        <div>{card.rarity}</div>
+                        </div>
+                    )
+                })
+            }</div>
+            </div>
             </div>
         )
     }
@@ -36,7 +51,8 @@ class UserProfile extends Component {
 
 const mapStateToProps = function(state) {    
     return {
-        users: state.users
+        users: state.users,
+        cards: state.cards
     }
 }
 
